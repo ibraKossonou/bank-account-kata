@@ -15,7 +15,7 @@ public class SavingsAccount extends BankAccount {
 
     @Override
     public void withdraw(BigDecimal amount) {
-        if (amount== null) throw new IllegalArgumentException("Withdrawal must be positive");
+        if (amount== null || amount.compareTo(BigDecimal.ZERO) <= 0) throw new IllegalArgumentException("Withdrawal must be positive");
         
         if (amount.compareTo(balance) > 0) {
             throw new InsufficientFundsException("Insufficient funds for savings account");
